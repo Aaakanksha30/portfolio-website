@@ -24,14 +24,6 @@ function Navbar() {
             <a href="#education" className="text-slate-200 hover:text-blue-400">Education</a>
             <a href="#skills" className="text-slate-200 hover:text-blue-400">Skills</a>
             <a href="#contact" className="text-slate-200 hover:text-blue-400">Contact</a>
-            <a
-              href={RESUME_DOWNLOAD}
-              className="px-4 py-2 bg-blue-500 text-white rounded-md font-medium hover:bg-blue-600"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download Resume
-            </a>
           </nav>
 
           <div className="md:hidden">
