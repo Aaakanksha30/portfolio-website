@@ -37,11 +37,13 @@ function ContactSection() {
 
     try {
       // template params must match the variables used in your EmailJS template
+      // use variable names that match your EmailJS template: {{name}}, {{email}}, {{message}}, {{title}}, {{time}}
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        subject: formData.subject,
+        name: formData.name,
+        email: formData.email,
+        title: formData.subject,
         message: formData.message,
+        time: new Date().toLocaleString(),
       };
 
       // send using explicit params (more robust than sendForm when template variable names differ)
