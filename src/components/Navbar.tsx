@@ -19,7 +19,10 @@ function Navbar() {
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#projects" className="text-slate-200 hover:text-blue-400">Work</a>
+            <a href="#home" className="text-slate-200 hover:text-blue-400">Home</a>
+            <a href="#about" className="text-slate-200 hover:text-blue-400">About</a>
+            <a href="#education" className="text-slate-200 hover:text-blue-400">Education</a>
+            <a href="#skills" className="text-slate-200 hover:text-blue-400">Skills</a>
             <a href="#contact" className="text-slate-200 hover:text-blue-400">Contact</a>
             <a
               href={RESUME_DOWNLOAD}
@@ -44,10 +47,13 @@ function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {open && (
+          {open && (
         <div className="md:hidden bg-slate-900/95 border-t border-slate-700/40">
           <div className="px-4 py-3 space-y-2">
-            <a href="#projects" className="block text-slate-200">Work</a>
+            <a href="#home" className="block text-slate-200">Home</a>
+            <a href="#about" className="block text-slate-200">About</a>
+            <a href="#education" className="block text-slate-200">Education</a>
+            <a href="#skills" className="block text-slate-200">Skills</a>
             <a href="#contact" className="block text-slate-200">Contact</a>
             <a href={RESUME_DOWNLOAD} className="block text-slate-200">Download Resume</a>
           </div>
