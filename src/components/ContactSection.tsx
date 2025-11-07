@@ -30,18 +30,24 @@ function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    // prefer explicit init + send; init ensures the public key is set
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_y2qa76w';
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_v2g6fus';
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'U03_e8wy-S1wQpMMv';
 
     try {
-      // prefer explicit init + sendForm; init ensures the public key is set
-      const result = await emailjs.sendForm(
-        'service_y2qa76w',
-        'template_v2g6fus',
-        formRef.current!,
-        'U03_e8wy-S1wQpMMv'
-      );
-      // log result for debugging
+      // template params must match the variables used in your EmailJS template
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      // send using explicit params (more robust than sendForm when template variable names differ)
+      const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
       // eslint-disable-next-line no-console
-      console.log('EmailJS result:', result);
+      console.log('EmailJS send result:', result);
 
       setToast({ type: 'success', message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', subject: '', message: '' });
