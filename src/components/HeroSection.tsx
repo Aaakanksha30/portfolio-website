@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { fadeInUp, floatingAnimation } from '../utils/animations';
+import { fadeInUp } from '../utils/animations';
 import TypingAnimation from './TypingAnimation';
 
 function HeroSection() {
@@ -66,20 +66,14 @@ function HeroSection() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <motion.a
-            href="#contact"
+            href="https://drive.google.com/uc?export=download&id=1IfUGL5zKh6FtA4Enwa4Y2hPaBGF1-mUA"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold shadow-lg hover:shadow-blue-500/50 transition-all"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Contact Me
-          </motion.a>
-          <motion.a
-            href="#projects"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 border-2 border-blue-500 text-blue-400 rounded-lg font-semibold hover:bg-blue-500/10 transition-all"
-          >
-            View Work
+            Download Resume
           </motion.a>
         </motion.div>
 
