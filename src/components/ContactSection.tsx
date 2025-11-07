@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import { Mail, Github, Linkedin } from 'lucide-react';
@@ -32,23 +32,41 @@ function ContactSection() {
     setLoading(true);
 
     try {
-      await emailjs.sendForm(
+      // prefer explicit init + sendForm; init ensures the public key is set
+      const result = await emailjs.sendForm(
         'service_y2qa76w',
         'template_v2g6fus',
         formRef.current!,
         'U03_e8wy-S1wQpMMv'
       );
+      // log result for debugging
+      // eslint-disable-next-line no-console
+      console.log('EmailJS result:', result);
 
       setToast({ type: 'success', message: 'Message sent successfully!' });
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setToast(null), 4000);
-    } catch (error) {
-      setToast({ type: 'error', message: 'Failed to send message, please try again later.' });
-      setTimeout(() => setToast(null), 4000);
+    } catch (error: any) {
+      // show more helpful error and log it so the developer can inspect network/response
+      // eslint-disable-next-line no-console
+      console.error('EmailJS error:', error);
+      const message = error?.text || error?.message || 'Failed to send message, please try again later.';
+      setToast({ type: 'error', message });
+      setTimeout(() => setToast(null), 6000);
     } finally {
       setLoading(false);
     }
   };
+
+  // initialize EmailJS with the public key (optional - sendForm also accepts the key)
+  useEffect(() => {
+    try {
+      emailjs.init('U03_e8wy-S1wQpMMv');
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.warn('EmailJS init warning:', err);
+    }
+  }, []);
 
   const contacts = [
     {
