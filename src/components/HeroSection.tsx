@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { fadeInUp } from '../utils/animations';
 import TypingAnimation from './TypingAnimation';
 
 function HeroSection() {
