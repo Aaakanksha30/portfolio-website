@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import WebPic from '../WEB_PIC.jpeg';
 import TypingAnimation from './TypingAnimation';
 
 function HeroSection() {
@@ -26,9 +27,11 @@ function HeroSection() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white text-4xl sm:text-5xl font-bold shadow-2xl">
-            AS
-          </div>
+          <img
+            src={WebPic}
+            alt="Akanksha"
+            className="w-24 h-24 sm:w-32 sm:h-32 mx-auto rounded-full object-cover shadow-2xl"
+          />
         </motion.div>
 
         <motion.h1
